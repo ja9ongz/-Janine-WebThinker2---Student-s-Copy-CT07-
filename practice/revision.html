@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-SG">
+
+<head>
+  <title>Index Page</title>
+  <link href="script/bootstrap.css" rel="stylesheet">
+  <link href="script/mystyle.css" rel="stylesheet">
+  
+  <script src="script/jquery.min.js"></script>
+  <script src="script/bootstrap.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand bg-info bg-opacity-25">
+      <div class="container-fluid">
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Index</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="page1.html">Page 1</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="page2.html">Page 2</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="page3.html">Page 3</a>
+            </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <article class="container my-3 mb-4">
+      <h1>Code for fun</h1>
+      <h2>where student create games</h2>
+      <p>Feel that your school subjects are boring? Are you tired of the endless amount of homework and exams you have? Fret not! Come and join us in this magical program called “Code for Fun”</p>
+  </article>
+  
+  <footer class="bg-dark bg-opacity-75 text-white">
+    <div class="container pb-4">
+      <p>This is a footer.</p>
+    </div>
+  </footer>
+
+  <script>
+    //part A
+     let calculateTriangleArea = (base, height) => {
+        let area = 0.5 * base * height;
+        return area;
+     };
+
+    //part B
+    let areaT1 = calculateTriangleArea(5,4);
+    let areaT2 = calculateTriangleArea(4,7);
+    let areaT3 = calculateTriangleArea(8,8);
+
+    //part C
+    let sum = areaT1 + areaT2 + areaT3;
+    console.log("Total Area: " + sum);
+  </script>
+</body>
+
+</html>
