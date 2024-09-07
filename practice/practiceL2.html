@@ -29,27 +29,44 @@
         <p class="text-center">This is an example paragraph. Replace it with your content.</p>
     </div>
 
-    <div class="form-fields">
-        <div class="form-control row">
-            <label class="fw-bold">Show:</label>
-            <input id="num" type="number" class="form-control">
-            <button class="btn btn-primary" type="button" onclick="timeTable()">Show</button>
-        </div>
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="col-2">
+                    <label class="fw-bold">Show:</label>
+                </div>
+                <div class="col-7">
+                    <input id="num" type="number" class="form-control">
+                </div>
+                
+                <div class="col-3">
+                    <button class="btn btn-primary" type="button" onclick="timeTable()">Show</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="practice"></div>
+
     </div>
 
-    <div id="practice"></div>
+    <br><br><br>
 
+    <div class="border border-3 dark-border">
+        <p class="bg-warning pl-3 pr-3 mt-3 mb-3">Paragragh 1</p>
+        <p class="bg-warning pl-3 pr-3 mt-3 mb-3">Paragraph 2</p>
+        <p class="bg-warning pl-3 pr-3 mt-3 mb-3">Paragraph 3</p>
+    </div>
+
+    
     <!-- End your HTML code here -->
     <script>
         let timeTable = () => {
             $("#practice").empty();
             let getval = parseInt($("#num").val());
-            for(let i = 1; i < getval; i++){
+            for(let i = 1; i <= 12; i++){
                 $("#practice").append('<p>'+ getval + ' x ' + i +' = '+ (i*getval) +'</p>');
             }
         };
-
-       
     </script>
 </body>
 
