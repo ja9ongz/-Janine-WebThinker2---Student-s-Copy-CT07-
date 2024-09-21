@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice HTML</title>
+    <link href="script/bootstrap.css" rel="stylesheet">
+    <script src="script/jquery.min.js"></script>
+    <script src="script/bootstrap.js"></script>
+    <style>
+        /* Add your custom CSS here */
+        .top-left-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <a href="../index.html" class="btn btn-primary top-left-button">Back to Index</a>
+    </div>
+    <br>
+    <!-- Start your HTML code here -->
+    <div class="container">
+        <form>
+            <div class="row my-3">
+                <div class="col-5">
+                    <label class="fw-bold">Fruit Selection</label>
+                    <select id="fruits" class="form-control"></select>
+                </div>
+
+                <div class="col-5">
+                    <label class="fw-bold">Quantity</label>
+                    <input id="fruitQty" type="number" class="form-control">
+                </div>
+
+                <div class="col-2">
+                    <br>
+                    <button type="submit" id="submitBtn" class="btn btn-primary" >Submit Order</button>
+                </div>
+            </div>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Fruit</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4">Grand Total:</th>
+                    <td id="price"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- End your HTML code here -->
+    
+
+    <script>
+        let fruit = ["Apple", "Orange", "Banana", "Pineapple"];
+        let fruitPrice = ["0.80", "1.45", "3.25", "2.85"];
+        
+
+        for(let i = 0; i < fruitPrice.length; i++){
+            $("#fruits").append('<option value="'+fruit[i]+'">'+ fruit[i] +'</option>');
+        }
+
+        $("#submitBtn").submit(function(e) {
+            e.preventDefault();
+
+            let fruits = $("#fruits").val();
+            let qty = $("#fruitQty").val();
+
+            console.log(fruits, qty);
+
+            if(qty > 0 && fruits != null){
+                let ind = fruit.indexOf(fruits);
+                let unitprice = fruitPrice[ind];
+                let totalprice = unitprice * qty;
+                
+                let row = '<tr><td>' + $("tbody tr").length + 1 + '</td><td>' + fruits + '</td><td> ' + qty + ' </td><td> ' + unitprice + ' </td><td>' + totalprice + ' </td></tr>'
+                $("tbody").append(row);
+                $("#price").html("$" + totalprice)
+            }
+        });
+
+
+
+        
+
+    </script>
+</body>
+</html>
