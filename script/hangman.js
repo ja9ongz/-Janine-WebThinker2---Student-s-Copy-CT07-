@@ -201,5 +201,61 @@ const WORDS = ["BRAZIL",
 
 let wordsLength = WORDS.length
 let idx = Math.floor(Math.random() * wordsLength)
-let word = WORDS[idx] 
-alert(word)
+
+let WORD =  WORDS[idx] ;
+let GUESS = [];
+let LIFE = 7;
+let INCORRECT_GUESSES = [];
+console.log(WORD);
+
+for(let i = 0; i < WORD.length; i++){
+    if(WORD[i] == " "){
+        $("#hint").append('<div class="fs-4 fw-bold p-3 m-1> </div>')
+    }
+    else $("#hint").append('<div class="card border-dark fs-4 fw-bold p-3 m-1">_</div>');
+}
+
+const submitGuess = () => {
+	let guess = $('#guessInput').val().toUpperCase();
+	if (guess.length === 1 && /^[A-Z]$/.test(guess)) {
+		checkLetter(guess);
+		$('#guessInput').val('');
+	} else {
+		alert('Please enter a valid letter.');
+	}
+}
+
+const checkLetter = (key) => {
+	if (GUESS.indexOf(key) == -1) {
+		GUESS.push(key);
+		if (WORD.indexOf(key) != -1) {
+			$('#hint').html('');
+			let found = true;
+			for (let i = 0; i < WORD.length; i++) {
+				if (WORD[i] == " ") $('#hint').append(`<div class="fs-4 fw-bold p-3 m-1"> </div>`);
+				else if (GUESS.indexOf(WORD[i]) != -1) $('#hint').append(`<div class="card border-dark fs-4 fw-bold p-3 m-1">${WORD[i]}</div>`);
+				else {
+					$('#hint').append(`<div class="card border-dark fs-4 fw-bold p-3 m-1">_</div>`);
+					found = false;
+				}
+			}
+			if (found) {
+				$('#game').addClass("bg-success");
+				showAnswer();
+			}
+		} else {
+			LIFE -= 1;
+			INCORRECT_GUESSES.push(key);
+			updateWrongGuess();
+			if (LIFE == 0) {
+				$('#game').addClass("bg-danger");
+				showAnswer();
+			}
+		}
+	}
+};
+
+
+const newGame = () => {
+    location.reload();
+};
